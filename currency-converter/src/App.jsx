@@ -4,12 +4,12 @@ import useCurrencyInfo from "./hooks/useCurrencyInfo";
 import "./App.css";
 
 function App() {
-   const [amount, setAmount] = useState(0);
-   const [from, setFrom] = useState("SAR");
-   const [to, setTo] = useState("BDT");
+   const [amount, setAmount] = useState(1);
+   const [from, setFrom] = useState("usd");
+   const [to, setTo] = useState("bdt");
    const [convertedAmount, setConvertedAmount] = useState(0);
 
-   const currencyInfo = useCurrencyInfo("SAR", "BDT");
+   const currencyInfo = useCurrencyInfo(from);
 
    // Object has method which takes all the keys in an array i think.
    const options = Object.keys(currencyInfo);
@@ -34,7 +34,7 @@ function App() {
                      e.preventDefault();
                   }}
                >
-                  {/* using the customer Input component here.*/}
+                  {/* using the custom Input component here.*/}
                   <div className="w-full mb-1">
                      <Input
                         label="From"
@@ -61,13 +61,13 @@ function App() {
                         currencyOption={options}
                         onCurrencyChange={(currency) => setTo(currency)}
                         selectCurrency={from}
-                        amountDisable={true}
+                        amountDisable
                      />
                   </div>
                   <button
                      type="submit"
                      className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
-                     onClick={() => convert}
+                     onClick={() => convert()}
                   >
                      Convert {from} to {to}
                   </button>

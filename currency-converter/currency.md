@@ -3,7 +3,8 @@
 ## api link
 
 ```javascript
-let url = `https://www.revolut.com/api/quote/public/${currency}${currency}`;
+let url1 = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
+let url2 = `https://www.revolut.com/api/quote/public/${currency}${currency}`;
 ```
 
 ## input box

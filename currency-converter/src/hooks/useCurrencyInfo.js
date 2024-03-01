@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
 
-const useCurrencyInfo = (currencyA, currencyB) => {
+const useCurrencyInfo = (currency = "usd") => {
    const [data, setData] = useState({});
+
    useEffect(() => {
-      fetch(`https://www.revolut.com/api/quote/public/SARBDT`)
-         .then((result) => {
-            console.log(result);
+      fetch(
+         `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`
+      )
+         .then((response) => {
+            return response.json();
          })
          .then((result) => {
-            console.log(result);
-            console.log(currencyA);
-            console.log(currencyB);
-            setData(result[currencyA]);
+            console.log(result[currency]);
+            setData(result[currency]);
          })
          .catch((error) => {
-            console.log(error);
+            console.log("Error fetching data:", error);
          });
-   }, [currencyA, currencyB]);
+   }, [currency]);
    console.log(data);
    return data;
 };

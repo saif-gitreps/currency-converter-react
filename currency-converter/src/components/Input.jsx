@@ -6,7 +6,7 @@ function Input({
    onAmountChange,
    onCurrencyChange,
    currencyOption = [],
-   selectCurrency = "USD",
+   selectCurrency = "use",
    amountDisable = false,
    currencyDisable = false,
    className = "",
@@ -38,14 +38,12 @@ function Input({
             >
                {
                   // this takes the currencyOption array and creates a new option for each currency.
-                  currencyOption.map((currency) => {
-                     <option value={currency} key={currency}>
+                  currencyOption.map((currency) => (
+                     <option key={currency} value={currency}>
                         {currency}
-                     </option>;
-                  })
+                     </option>
+                  ))
                }
-
-               <option value="usd">usd</option>
             </select>
          </div>
       </div>
